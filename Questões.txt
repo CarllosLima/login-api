@@ -1,0 +1,29 @@
+Questão 1
+
+Por que utilizamos o middleware express.json() no início do nosso arquivo server.js e o que acontece se o esquecermos ao enviar uma requisição POST?
+
+Utilizamos o express.json() para que o Express consiga ler os dados enviados em formato JSON nas requisições. Ele transforma os dados em um objeto JavaScript que podemos acessar através do req.body. Se esquecermos de usar esse middleware, os dados enviados na requisição POST não serão lidos corretamente e o req.body ficará vazio ou indefinido, fazendo com que a aplicação apresente erros.
+
+Questão 2
+
+Qual a diferença conceitual e prática entre responder uma requisição com o código HTTP Status 201 (Created) e com o código Status 400 (Bad Request)?
+
+O código 201 (Created) significa que a operação foi realizada com sucesso e que um novo recurso foi criado, como por exemplo o cadastro de um usuário. Já o código 400 (Bad Request) indica que existe algum problema na requisição enviada pelo cliente, como campos vazios, dados incorretos ou informações faltando. Na prática, o 201 representa sucesso e o 400 representa erro de validação.
+
+Questão 3
+
+Explique como a propriedade req.body é preenchida durante a chamada da rota POST /api/auth/register.
+
+A propriedade req.body é preenchida com os dados enviados pelo cliente no corpo da requisição. Quando usamos o Thunder Client e enviamos um JSON com nome, e-mail e senha, o Express recebe essas informações e as disponibiliza no objeto req.body. Assim, conseguimos acessar os valores para fazer as validações e cadastrar o usuário.
+
+Questão 4
+
+No nosso projeto, os usuários são armazenados no array usuarios = []. O que acontece com esses cadastros quando o servidor Express é reiniciado ou desligado? Como esse problema é resolvido em sistemas reais?
+
+Os usuários ficam armazenados apenas na memória do servidor enquanto ele está funcionando. Quando o servidor é desligado ou reiniciado, todas as informações do array são perdidas. Em sistemas reais esse problema é resolvido utilizando bancos de dados, como MySQL, PostgreSQL ou MongoDB, que armazenam os dados permanentemente mesmo depois que o servidor é reiniciado.
+
+Questão 5
+
+Quando a nossa interface em React (Front-End) for conectar a este servidor Express (Back-End), qual método de comunicação HTTP ela utilizará para enviar os dados digitados na tela de Login?
+
+A interface React utilizará uma requisição HTTP do tipo POST para enviar os dados do login ao servidor Express. Os dados como e-mail e senha serão enviados no corpo da requisição em formato JSON para que o servidor possa verificar as informações e validar o acesso do usuário.
