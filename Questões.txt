@@ -1,29 +1,57 @@
-Questão 1
+# 📚 Questões de Reflexão e Análise Técnica
 
-Por que utilizamos o middleware express.json() no início do nosso arquivo server.js e o que acontece se o esquecermos ao enviar uma requisição POST?
+## Questão 1
 
-Utilizamos o express.json() para que o Express consiga ler os dados enviados em formato JSON nas requisições. Ele transforma os dados em um objeto JavaScript que podemos acessar através do req.body. Se esquecermos de usar esse middleware, os dados enviados na requisição POST não serão lidos corretamente e o req.body ficará vazio ou indefinido, fazendo com que a aplicação apresente erros.
+### Por que utilizamos o middleware `express.json()` no início do nosso arquivo `server.js` e o que acontece se o esquecermos ao enviar uma requisição POST?
 
-Questão 2
+Utilizamos o `express.json()` para que o Express consiga ler os dados enviados em formato JSON nas requisições. Ele transforma os dados recebidos em um objeto JavaScript que pode ser acessado através do `req.body`.
 
-Qual a diferença conceitual e prática entre responder uma requisição com o código HTTP Status 201 (Created) e com o código Status 400 (Bad Request)?
+Se esquecermos de usar esse middleware, os dados enviados na requisição POST não serão interpretados corretamente, fazendo com que o `req.body` fique vazio ou indefinido. Como consequência, as validações e operações da aplicação poderão falhar.
 
-O código 201 (Created) significa que a operação foi realizada com sucesso e que um novo recurso foi criado, como por exemplo o cadastro de um usuário. Já o código 400 (Bad Request) indica que existe algum problema na requisição enviada pelo cliente, como campos vazios, dados incorretos ou informações faltando. Na prática, o 201 representa sucesso e o 400 representa erro de validação.
+---
 
-Questão 3
+## Questão 2
 
-Explique como a propriedade req.body é preenchida durante a chamada da rota POST /api/auth/register.
+### Qual a diferença conceitual e prática entre responder uma requisição com o código HTTP Status 201 (Created) e com o código Status 400 (Bad Request)?
 
-A propriedade req.body é preenchida com os dados enviados pelo cliente no corpo da requisição. Quando usamos o Thunder Client e enviamos um JSON com nome, e-mail e senha, o Express recebe essas informações e as disponibiliza no objeto req.body. Assim, conseguimos acessar os valores para fazer as validações e cadastrar o usuário.
+O código **201 (Created)** indica que a operação foi realizada com sucesso e que um novo recurso foi criado, como por exemplo o cadastro de um novo usuário.
 
-Questão 4
+Já o código **400 (Bad Request)** indica que existe algum erro na requisição enviada pelo cliente, como campos vazios, dados inválidos ou informações ausentes.
 
-No nosso projeto, os usuários são armazenados no array usuarios = []. O que acontece com esses cadastros quando o servidor Express é reiniciado ou desligado? Como esse problema é resolvido em sistemas reais?
+Na prática, o código 201 representa sucesso na operação, enquanto o código 400 representa um problema nos dados enviados pelo usuário.
 
-Os usuários ficam armazenados apenas na memória do servidor enquanto ele está funcionando. Quando o servidor é desligado ou reiniciado, todas as informações do array são perdidas. Em sistemas reais esse problema é resolvido utilizando bancos de dados, como MySQL, PostgreSQL ou MongoDB, que armazenam os dados permanentemente mesmo depois que o servidor é reiniciado.
+---
 
-Questão 5
+## Questão 3
 
-Quando a nossa interface em React (Front-End) for conectar a este servidor Express (Back-End), qual método de comunicação HTTP ela utilizará para enviar os dados digitados na tela de Login?
+### Explique como a propriedade `req.body` é preenchida durante a chamada da rota `POST /api/auth/register`.
 
-A interface React utilizará uma requisição HTTP do tipo POST para enviar os dados do login ao servidor Express. Os dados como e-mail e senha serão enviados no corpo da requisição em formato JSON para que o servidor possa verificar as informações e validar o acesso do usuário.
+A propriedade `req.body` é preenchida com os dados enviados pelo cliente no corpo da requisição. Durante os testes realizados no Thunder Client, os dados foram enviados em formato JSON contendo nome, e-mail, senha e confirmação de senha.
+
+O Express recebe essas informações e as disponibiliza no objeto `req.body`, permitindo que a aplicação realize as validações necessárias e efetue o cadastro do usuário.
+
+---
+
+## Questão 4
+
+### No nosso projeto, os usuários são armazenados no array `usuarios = []`. O que acontece com esses cadastros quando o servidor Express é reiniciado ou desligado? Como esse problema é resolvido em sistemas reais?
+
+Como os usuários estão armazenados apenas em um array na memória, todos os dados são perdidos quando o servidor é desligado ou reiniciado.
+
+Em sistemas reais esse problema é resolvido utilizando bancos de dados, como MySQL, PostgreSQL ou MongoDB, que armazenam as informações de forma permanente e mantêm os dados mesmo após o reinício do servidor.
+
+---
+
+## Questão 5
+
+### Quando a nossa interface em React (Front-End) for conectar a este servidor Express (Back-End), qual método de comunicação HTTP ela utilizará para enviar os dados digitados na tela de Login?
+
+A interface React utilizará uma requisição HTTP do tipo **POST** para enviar os dados do formulário de login para o servidor Express.
+
+As informações, como e-mail e senha, serão enviadas em formato JSON no corpo da requisição. O servidor então receberá esses dados, realizará as validações necessárias e retornará uma resposta informando se o login foi realizado com sucesso ou não.
+
+---
+
+## ✅ Conclusão
+
+Durante esta atividade foi possível aplicar conceitos importantes relacionados ao desenvolvimento de APIs RESTful utilizando Node.js e Express, incluindo criação de rotas, tratamento de requisições, validação de dados, uso de códigos de status HTTP e testes de endpoints utilizando o Thunder Client.
