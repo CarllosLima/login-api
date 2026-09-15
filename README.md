@@ -229,15 +229,7 @@ GitHub:
 https://github.com/CarllosLima/login-api
 ```
 
----
 
-## ✅ Status do Projeto
-
-🟢 Finalizado
-
-🟢 Testado
-
-🟢 Documentado
 
 🟢 Publicado no GitHub
 
