@@ -221,16 +221,3 @@ Projeto desenvolvido como atividade prática de Back-End para aplicação dos co
 
 ---
 
-## 🔗 Repositório
-
-GitHub:
-
-```txt
-https://github.com/CarllosLima/login-api
-```
-
-
-
-🟢 Publicado no GitHub
-
-🟢 Pronto
